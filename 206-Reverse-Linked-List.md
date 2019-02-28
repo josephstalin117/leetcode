@@ -37,9 +37,9 @@ public:
 ```
 
 #### Solution2
+通过递归调用，直接进入到最后一个指针元素，此时作为最新的头结点，循环跳出来后，head->next的下一个指向head自己 然后head->next赋值为空，从而完成两个元素之间的调换。newhead从头到尾都是没有变化的，因为没人去改变他，所以在递归返回的时候，也是可以从头到尾的返回同一个数值的。
 ```
 //递归版本
-//通过递归调用，直接进入到最后一个指针元素，此时作为最新的头结点，循环跳出来后，head->next的下一个指向head自己 然后head->next赋值为空，从而完成两个元素之间的调换。newhead从头到尾都是没有变化的，因为没人去改变他，所以在递归返回的时候，也是可以从头到尾的返回同一个数值的。
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -51,16 +51,13 @@ public:
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
-        ListNode* prev = nullptr;
-        ListNode* curr = head;
-        ListNode* next;
-        while (curr) {
-            next = curr->next;
-            curr->next = prev;
-            prev = curr;
-            curr = next;
+        if(head == NULL || head -> next == NULL){
+            return head;
         }
-        return prev;
+	    ListNode* newHead = reverseList(head -> next);
+	    head -> next -> next  = head ;
+	    head -> next = NULL;
+	    return newHead;
     }
 };
 ```
