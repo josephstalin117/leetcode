@@ -15,6 +15,7 @@ Output:
 ```
 
 #### Solution1
+backtracking法（回溯法）
 我们需要用一个辅助数组来记录当前递归层时，哪些数字已经在上层的递归使用过了。
 ```
 class Solution {
