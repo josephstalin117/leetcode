@@ -42,7 +42,8 @@ public:
         }
         return res;
     }
-};```
+};
+```
 
 #### Solution2
 ```
